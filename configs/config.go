@@ -23,13 +23,15 @@ type CommonConfig struct {
 	LogFormat string
 }
 
-type DbConfig struct {
-	Driver string
-	Url    string
-}
-
 func usage() {
 	fmt.Printf("Usage: %s -c config_file [-v] [-h]\n", os.Args[0])
+}
+
+var Config *ServerConfig //引用配置文件结构
+
+func init() {
+	fmt.Println("call config.init")
+	Config = GetConfig()
 }
 
 func GetConfig() (config *ServerConfig) {
