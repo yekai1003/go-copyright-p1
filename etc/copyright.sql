@@ -14,8 +14,8 @@ create table account
    identity_id          varchar(100),
    address              varchar(256)
 );
-CREATE UNIQUE INDEX account_email_uindex ON copyright2.account (email);
-CREATE UNIQUE INDEX account_name_uindex ON copyright2.account (username);
+CREATE UNIQUE INDEX account_email_uindex ON copyright.account (email);
+CREATE UNIQUE INDEX account_name_uindex ON copyright.account (username);
 alter table account comment '账户表';
 
 
@@ -24,22 +24,16 @@ create table content
    content_id           int not null primary key auto_increment,
    title                varchar(100),
    content              blob,
-   content_hash         varchar(256),
+   content_hash         varchar(100),
    ts                   timestamp
 );
 
 create table account_content
 (
-   account_id           int,
-   content_id           int,
-   content_hash         varchar(256),
-   percent              int,
-   price                int,
-   sell_price           int,
-   sell_percent         int,
-   ts                   timestamp,
-   status               varchar(2),
-   tokenid              int
+   content_hash         varchar(100),
+   tokenid              int,
+   address              varchar(100),
+   ts                   timestamp
 );
 
 alter table account_content add constraint FK_Reference_2 foreign key (account_id)
