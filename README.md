@@ -2,10 +2,13 @@
 
 ### 目录介绍
 
--  static html页面目录
+-  static  html页面目录
 -  configs 配置文件读取处理
 -  routes  路由处理
--  etc  配置文件处理
+-  etc   配置文件处理
+-  utils 通用处理，错误信息
+-  dbs   数据库处理文件
+-  eths  以太坊相关处理
 
 ## 环境安装需要
 
@@ -19,6 +22,25 @@ go get -u github.com/BurntSushi/toml
 
 ```
 go get -u github.com/labstack/echo
+go get -u github.com/labstack/echo-contrib/session
+```
+
+### 开发过程可能需要用到的库安装方法如下
+
+安装crypto，需要借助github，go get不能用
+```
+cd $GOPATH/src
+mkdir -p golang.org/x/
+cd golang.org/x/
+git clone https://github.com/golang/crypto.git
+```
+其他可能涉及的库
+```
+go get -u github.com/labstack/echo/
+go get -u github.com/labstack/gommon/
+go get -u github.com/dgrijalva/jwt-go
+go get -u github.com/BurntSushi/tomlgo 
+go get -u github.com/labstack/echo-contrib/session
 ```
 
 ### echo框架学习资料
