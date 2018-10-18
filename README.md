@@ -20,27 +20,34 @@ go get -u github.com/BurntSushi/toml
 
 ### echo框架安装
 
-```
-go get -u github.com/labstack/echo
-go get -u github.com/labstack/echo-contrib/session
-```
-
-### 开发过程可能需要用到的库安装方法如下
-
-安装crypto，需要借助github，go get不能用
+先安装crypto,labstack使用了该库，需要借助github，go get不能用
 ```
 cd $GOPATH/src
 mkdir -p golang.org/x/
 cd golang.org/x/
 git clone https://github.com/golang/crypto.git
 ```
+安装echo
+```
+go get -u github.com/labstack/echo
+go get -u github.com/labstack/echo-contrib/session
+```
+
+
+
+### 开发过程可能需要用到的库安装方法如下
+
+
+mysql的go语言驱动安装
+```
+go get -u github.com/go-sql-driver/mysql
+```
+
 其他可能涉及的库
 ```
-go get -u github.com/labstack/echo/
 go get -u github.com/labstack/gommon/
 go get -u github.com/dgrijalva/jwt-go
-go get -u github.com/BurntSushi/tomlgo 
-go get -u github.com/labstack/echo-contrib/session
+go get -u github.com/go-sql-driver/mysql
 ```
 
 ### echo框架学习资料
