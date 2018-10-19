@@ -14,7 +14,7 @@ var EchoObj *echo.Echo //echo框架对象全局定义
 
 func main() {
 
-	fmt.Printf("get config %v \n", configs.Config.Common.Port)
+	fmt.Printf("get config %v ,%v\n", configs.Config.Common.Port, configs.Config.Db.Connstr)
 	EchoObj = echo.New()             //创建echo对象
 	EchoObj.Use(middleware.Logger()) //安装日志中间件
 	EchoObj.Use(middleware.Recover())

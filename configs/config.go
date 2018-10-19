@@ -16,11 +16,17 @@ var (
 
 type ServerConfig struct {
 	Common *CommonConfig
+	Db     *DbConfig
 }
 
 type CommonConfig struct {
 	Port      string
 	LogFormat string
+}
+
+type DbConfig struct {
+	Driver  string
+	Connstr string
 }
 
 func usage() {
