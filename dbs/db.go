@@ -3,7 +3,7 @@ package dbs
 import (
 	"database/sql"
 	"fmt"
-	"go-copyright/configs"
+	"go-copyright-p1/configs"
 	_ "strconv"
 	"time"
 
