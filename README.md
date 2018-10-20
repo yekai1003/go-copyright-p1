@@ -1,4 +1,4 @@
-# go-copyright-p1
+# go-copyright-p2
 
 ## 1 目录介绍
 
@@ -94,7 +94,7 @@ method | GET
 
 名称 | 说明
 ---|---
-url | /account
+url | /login
 method | POST
 请求数据 | json:identity_id,username
 响应数据 | json:errno,errmsg
@@ -138,13 +138,16 @@ method | GET
 	"data": {
 		"contents": [{
 			"content_hash": "2b48f7f9b1156bd26d13d498d2a2441ca857922d743e5ab7d8fde20dd18e3f21",
-			"title": "马夏尔2.jpeg"
+			"title": "马夏尔2.jpeg",
+			"token_id":"3"
 		}, {
 			"content_hash": "f72d0385722cb58fddaa493557950fe83fe317a0aa41d44ddb386c82f902d9dd",
-			"title": "鸟叔2.jpg"
+			"title": "鸟叔2.jpg",
+			"token_id":"4"
 		}, {
 			"content_hash": "6bb7e5ec0c5f057cfdb25e54a2f0f09bca5819213761697fa57e6368eed1ec9d",
-			"title": "am9.jpg"
+			"title": "am9.jpg",
+			"token_id":"5"
 		}],
 		"current_page": 1,
 		"total_page": 1
@@ -156,7 +159,7 @@ method | GET
 
 名称 | 说明
 ---|---
-url | /content/==picturename==
+url | /content/:title
 method | GET
 请求数据 | 无
 响应数据 | 图片二进制数据
@@ -167,16 +170,17 @@ method | GET
 
 名称 | 说明
 ---|---
-url | /aution
+url | /auction
 method | POST
-请求数据 | json:{content_hash,percent,price}
+请求数据 | json:{content_hash,percent,price,token_id}
 响应数据 | 图片二进制数据
 
 请求数据举例：
 ```
 content_hash: "6bb7e5ec0c5f057cfdb25e54a2f0f09bca5819213761697fa57e6368eed1ec9d",
 percent: 30,
-price: 20
+price: 20,
+token_id:6
 ```
 
 ### 4.8 查看当前拍卖
@@ -186,7 +190,7 @@ price: 20
 url | /auctions
 method | GET
 请求数据 | 无
-响应数据 | json:{errno,errmsg,data;[{price,title,token_id}]}
+响应数据 | json:{errno,errmsg,data:[{price,title,token_id,content_hash}]}
 
 响应数据举例
 
@@ -194,14 +198,14 @@ method | GET
 {"errno":"0","errmsg":"成功","data":[{"price":"100","title":"马夏尔和女友.jpeg","token_id":"6"}]}
 ```
 
-### 4.9 拍卖图片
+### 4.9 拍卖图片结束
 
 名称 | 说明
 ---|---
-url | /auctions
+url | /auction/bid
 method | GET
-请求数据 | 无
-响应数据 | json:{errno,errmsg,data;[{price,title,token_id}]}
+请求数据 | price,tokenid
+响应数据 | json:{errno,errmsg}
 
 
 ## 5 功能函数使用
